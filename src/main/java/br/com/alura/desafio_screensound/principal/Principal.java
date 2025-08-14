@@ -32,6 +32,7 @@ public class Principal {
                     3- Listar músicas
                     4- Buscar músicas por artistas
                     5- Pesquisar dados sobre um artista
+                    6 - Listar Artistas
                                     
                     9 - Sair
                     Digite a opção desejada:""";
@@ -55,6 +56,9 @@ public class Principal {
                     break;
                 case 5:
                     pesquisarDadosDoArtista();
+                    break;
+                case 6:
+                    listarArtistas();
                     break;
                 case 9:
                     System.out.println("Encerrando a aplicação!");
@@ -115,5 +119,11 @@ public class Principal {
             System.out.print("Deseja cadastrar um novo artista? [S/N]: ");
             cadastrarNovoArtista = leitura.nextLine();
         }
+    }
+
+    private void listarArtistas() {
+        List<Artista> artistas = repositorio.findAll();
+        artistas.forEach(a ->
+                System.out.println(a.getNome() + ", Tipo de artista: " + a.getTipo()));
     }
 }
